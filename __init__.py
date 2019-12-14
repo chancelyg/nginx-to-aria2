@@ -6,6 +6,7 @@ import time
 from bs4 import BeautifulSoup
 import requests
 import json
+import sys
 
 nginx_url = "http://127.0.0.1:9092/"
 aria2_url = "http://127.0.0.1:6800/jsonrpc"
@@ -36,7 +37,7 @@ def get_local_record():
     """Read download record by local file"""
     records = []
     download_record_file_path = os.path.join(
-        str(os.getcwd()), "download_record.txt")
+        str(sys.path[0]), "download_record.txt")
     if os.path.exists(download_record_file_path) is False:
         return records
     for line in open(download_record_file_path):
@@ -57,7 +58,7 @@ def analyze_url(url):
     commit_result = commit_download_task(url)
     if commit_result:
         download_record_file_path = os.path.join(
-            str(os.getcwd()), "download_record.txt")
+            str(sys.path[0]), "download_record.txt")
         with open(download_record_file_path, "a") as f:
             f.write(url + '\n')
 
