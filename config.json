@@ -1,0 +1,13 @@
+{
+    "nginx_url": ["http://common.chancel.cn/"],
+    "aria2_rpc_url": "http://127.0.0.1:6800/jsonrpc",
+    "download_path": "/tmp/fuckoff",
+    "disable_file_type": {
+        "enable": false,
+        "formats": [
+            "txt",
+            "jepg",
+            "png"
+        ]
+    }
+}
