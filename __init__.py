@@ -9,13 +9,14 @@ import requests
 import json
 from collections import namedtuple
 
+
 config_object = None
 
 def get_local_record():
     """Read download record by local file"""
     records = []
     download_record_file_path = os.path.join(
-        str(os.getcwd()), "download_record.txt")
+        str(sys.path[0]), "download_record.txt")
     if os.path.exists(download_record_file_path) is False:
         return records
     for line in open(download_record_file_path):
@@ -52,7 +53,7 @@ def analyze_url(url):
     commit_result = commit_download_task(url)
     if commit_result:
         download_record_file_path = os.path.join(
-            str(os.getcwd()), "download_record.txt")
+            str(sys.path[0]), "download_record.txt")
         with open(download_record_file_path, "a") as f:
             f.write(url + '\n')
 
