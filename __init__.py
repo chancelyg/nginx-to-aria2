@@ -4,9 +4,10 @@ import urllib.request
 import os
 import sys
 import time
-from bs4 import BeautifulSoup
 import requests
 import json
+from bs4 import BeautifulSoup
+from urllib.parse import unquote
 from collections import namedtuple
 
 
@@ -31,8 +32,9 @@ def commit_download_task(url):
     _user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
     params = [[url]]
     if config_object.download_path is not None:
-        file_path = config_object.download_path + \
-            '/'.join(x for x in (url.split('/')[1:-1]))
+        file_path = config_object.download_path
+        for _item in [unquote(x,'utf-8') for x in (url.split('/')[3:-1])]:
+            file_path = os.path.join(file_path,_item)
         params.append({"dir": file_path})
     data = {'id': str(time.time()), 'jsonrpc': '2.0', "method": "aria2.addUri",
             "params": params}
