@@ -1,8 +1,8 @@
 {
-    "nginx_url": ["http://127.0.0.1:9092/"],
-    "aria2_rpc_url": "http://127.0.0.1:6800/jsonrpc",
-    "download_path": "/store/sdc/aria2",
-    "disable_file_type": {
+    "nginx_url": ["http://193.148.70.187:9092/"],
+    "aria2_rpc_url": "http://192.168.11.13:6800/jsonrpc",
+    "download_path": "/mnt/sdb/aria2-downloads",
+    "ignore_file_type": {
         "enable": false,
         "formats": [
             "txt",
